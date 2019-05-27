@@ -41,7 +41,7 @@ class Job(models.Model):
   salary_per_sprint = models.DecimalField(max_digits=6, decimal_places=2)
 
   def __str__(self):
-    return ' -- '.join(self.role,self.profile)
+    return ' -- '.join([self.role,self.profile])
   
 class Member(models.Model):
   STATUS_CHOICES = (
