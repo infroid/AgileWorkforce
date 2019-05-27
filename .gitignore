@@ -4,4 +4,4 @@ staticfiles
 .env
 db.sqlite3
 AgileWorforce/*
-.vscode
+.vscode/*
