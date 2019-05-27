@@ -25,4 +25,4 @@ class Goal(models.Model):
   sprint = models.ForeignKey(Sprint, on_delete=models.CASCADE, related_name='goals')
 
   def __str__(self):
-    return f'{self.sprint.__str__} -- {self.name}'
+    return f'{self.sprint.user.first_name} {self.sprint.user.last_name} -- {self.sprint.start_date} -- {self.name}'

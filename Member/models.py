@@ -58,4 +58,4 @@ class Member(models.Model):
   status = models.CharField(choices=STATUS_CHOICES, max_length=3)
 
   def __str__(self):
-    return f'{self.user.first_name} {self.user.last_name} -- {self.job.__str__}'
+    return f'{self.user.first_name} {self.user.last_name} -- {self.job.profile} ({self.job.role})'
