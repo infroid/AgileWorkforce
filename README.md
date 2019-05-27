@@ -1,8 +1,12 @@
-# Python: Getting Started
+# Agile Workforce
 
-A barebones Django app, which can easily be deployed to Heroku.
+The Infroid Agile Workforce platform which can help small companies manage their workforce efficiently (with Agile).
 
-This application supports the [Getting Started with Python on Heroku](https://devcenter.heroku.com/articles/getting-started-with-python) article - check it out.
+This application supports the [Agile Software Development Methodology](https://en.wikipedia.org/wiki/Agile_software_development).
+
+## Subsciption for Infroid Managed Agile Workforce platform
+
+Visit [Infroid Agile Workforce](https://awf.infroid.in) to check out more about the affordable subscription based solution.
 
 ## Running Locally
 

@@ -32,5 +32,5 @@ class Profile(models.Model):
   country = models.ForeignKey(Country, on_delete=models.CASCADE)
   date_of_birth = models.DateField(null=True, blank=True)
   role = models.CharField(choices=ROLE_CHOICES, max_length=3)
-  earning = models.DecimalField(decimal_places=2)
-  
+  amount_due = models.DecimalField(decimal_places=2)
+  amount_paid = models.DecimalField(decimal_places=2)
