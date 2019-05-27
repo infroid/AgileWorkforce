@@ -58,4 +58,4 @@ class Member(models.Model):
   status = models.CharField(choices=STATUS_CHOICES, max_length=3)
 
   def __str__(self):
-    return ' -- '.join(self.user,self.job)
+    return ' -- '.join([self.user,self.job])

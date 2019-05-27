@@ -16,7 +16,7 @@ class Sprint(models.Model):
   status = models.CharField(choices=STATUS_CHOICES, max_length=3)
 
   def __str__(self):
-    return ' -- '.join(self.user,self.start_date)
+    return ' -- '.join([self.user,self.start_date])
 
 
 class Goal(models.Model):
@@ -25,4 +25,4 @@ class Goal(models.Model):
   sprint = models.ForeignKey(Sprint, on_delete=models.CASCADE, related_name='goals')
 
   def __str__(self):
-    return ' -- '.join(self.sprint,self.name)
+    return ' -- '.join([self.sprint,self.name])
