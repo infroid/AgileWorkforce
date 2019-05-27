@@ -1,36 +1,48 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-# Create your models here.
+
 class Country(models.Model):
   code = models.CharField(max_length=10)
   name = models.CharField(max_length=250)
+
 
 class State(models.Model):
   code = models.CharField(max_length=10)
   name = models.CharField(max_length=250)
   country = models.ForeignKey(Country, on_delete=models.CASCADE)
 
+
 class City(models.Model):
   code = models.CharField(max_length=10)
   name = models.CharField(max_length=250)
-  country = models.ForeignKey(Country, on_delete=models.CASCADE)
   state = models.ForeignKey(State, on_delete=models.CASCADE)
+  country = models.ForeignKey(Country, on_delete=models.CASCADE)
 
-class Profile(models.Model):
+
+class Job(models.Model):
   ROLE_CHOICES = (
-    ('INT', 'Intern'),
-    ('CNT', 'Contractor'),
-    ('EMP', 'Employee'),
-    ('OWN', 'Owner'),
+      ('INT', 'Intern'),
+      ('CNT', 'Contractor'),
+      ('EMP', 'Employee'),
+      ('OWN', 'Founder / Owner'),
   )
 
-  user = models.OneToOneField(User, on_delete=models.CASCADE)
-  address = models.CharField(max_length=250)
-  city = models.ForeignKey(City, on_delete=models.CASCADE)
-  state = models.ForeignKey(State, on_delete=models.CASCADE)
-  country = models.ForeignKey(Country, on_delete=models.CASCADE)
-  date_of_birth = models.DateField(null=True, blank=True)
   role = models.CharField(choices=ROLE_CHOICES, max_length=3)
-  amount_due = models.DecimalField(decimal_places=2)
-  amount_paid = models.DecimalField(decimal_places=2)
+  profile = models.CharField(max_length=250)
+  salary_per_sprint = models.DecimalField(max_digits=6, decimal_places=2)
+
+  
+class Member(models.Model):
+  STATUS_CHOICES = (
+      ('NEW', 'New Member'),
+      ('ACT', 'Active Member'),
+      ('BLK', 'Blocked Member'),
+  )
+
+  user = models.OneToOneField(User, on_delete=models.PROTECT)
+  city = models.ForeignKey(City, on_delete=models.PROTECT, related_name='members')
+  job = models.ForeignKey(Job, on_delete=models.PROTECT, related_name='members')
+  amount_due = models.DecimalField(max_digits=10, decimal_places=2)
+  amount_paid = models.DecimalField(max_digits=10, decimal_places=2)
+  status = models.CharField(choices=STATUS_CHOICES, max_length=3)
