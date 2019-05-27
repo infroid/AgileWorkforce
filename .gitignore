@@ -1,6 +1,6 @@
 *.pyc
+update.bat
 .env
-*.bat
 db.sqlite3
 venv
 /staticfiles
