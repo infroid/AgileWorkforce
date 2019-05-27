@@ -16,7 +16,7 @@ class Sprint(models.Model):
   status = models.CharField(choices=STATUS_CHOICES, max_length=3)
 
   class Meta:
-    ordering = ('created',)
+    ordering = ('user','start_date',)
 
   def __str__(self):
     return f'{self.user.first_name} {self.user.last_name} -- {self.start_date}'
@@ -28,7 +28,7 @@ class Goal(models.Model):
   sprint = models.ForeignKey(Sprint, on_delete=models.CASCADE, related_name='goals')
 
   class Meta:
-    ordering = ('created',)
+    ordering = ('sprint','name',)
 
   def __str__(self):
     return f'{self.sprint.user.first_name} {self.sprint.user.last_name} -- {self.sprint.start_date} -- {self.name}'

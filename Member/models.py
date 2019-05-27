@@ -7,7 +7,7 @@ class Country(models.Model):
   name = models.CharField(max_length=250)
 
   class Meta:
-    ordering = ('created',)
+    ordering = ('name',)
 
   def __str__(self):
     return self.name
@@ -19,7 +19,7 @@ class State(models.Model):
   country = models.ForeignKey(Country, on_delete=models.CASCADE)
 
   class Meta:
-    ordering = ('created',)
+    ordering = ('country','name',)
 
   def __str__(self):
     return self.name
@@ -32,7 +32,7 @@ class City(models.Model):
   country = models.ForeignKey(Country, on_delete=models.CASCADE)
 
   class Meta:
-    ordering = ('created',)
+    ordering = ('country','state','name',)
 
   def __str__(self):
     return self.name
@@ -51,7 +51,7 @@ class Job(models.Model):
   salary_per_sprint = models.DecimalField(max_digits=6, decimal_places=2)
 
   class Meta:
-    ordering = ('created',)
+    ordering = ('role','profile',)
 
   def __str__(self):
     return f'{self.profile} ({self.role})'
@@ -71,7 +71,7 @@ class Member(models.Model):
   status = models.CharField(choices=STATUS_CHOICES, max_length=3)
 
   class Meta:
-    ordering = ('created',)
+    ordering = ('user',)
 
   def __str__(self):
     return f'{self.user.first_name} {self.user.last_name} -- {self.job.profile} ({self.job.role})'
